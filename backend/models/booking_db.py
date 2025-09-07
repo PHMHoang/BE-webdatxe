@@ -1,10 +1,13 @@
-from motor.motor_asyncio import AsyncIOMotorDatabase
 from typing import List
 from models.booking import Booking
+import boto3
+from config.settings import settings
+from uuid
 
 class BookingDB:
-    def __init__(self, db: AsyncIOMotorDatabase):
-        self.collection = db.bookings
+    def __init__(self):
+        self.dynamodb = boto3.resource('dynamodb', region_name=settings.AWS_REGION)
+        self.table = self.dynamodb.Table(settings.DYNAMODB_TABLE_NAME)
 
     async def create(self, booking: Booking) -> dict:
         booking_dict = booking.dict(by_alias=True)
