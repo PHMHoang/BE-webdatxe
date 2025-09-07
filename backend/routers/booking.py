@@ -5,6 +5,12 @@ from typing import List
 from .admin import get_current_admin
 from models.booking import Booking
 from models.booking_db import BookingDB
+import boto3
+
+s3 = boto3.client('s3')
+
+response = s3.list_buckets()
+print([bucket['Name'] for bucket in response['Buckets']])
 
 router = APIRouter()
 
