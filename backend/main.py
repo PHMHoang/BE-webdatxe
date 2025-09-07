@@ -4,9 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 from config.settings import settings
 from routers import admin, booking
-from flask_cors import CORS
-app = Flask(__name__)
-CORS(app)
+
 app = FastAPI()
 
 # Allow CORS for frontend
