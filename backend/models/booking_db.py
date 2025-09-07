@@ -8,6 +8,7 @@ s3 = boto3.client('s3')
 
 response = s3.list_buckets()
 print([bucket['Name'] for bucket in response['Buckets']])
+
 class BookingDB:
     def __init__(self):
         self.dynamodb = boto3.resource('dynamodb', region_name=settings.AWS_REGION)
