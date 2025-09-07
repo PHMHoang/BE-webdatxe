@@ -6,4 +6,3 @@ passlib[bcrypt]
 python-jose
 pydantic
 bson
-boto3
