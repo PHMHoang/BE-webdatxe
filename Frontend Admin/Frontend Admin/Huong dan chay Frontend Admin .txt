@@ -1,0 +1,27 @@
+Các bước triển khai frontend admin React trên EC2:
+
+
+1. Giải nén Frontend Admin, rồi vào folder Admin.
+Build frontend admin bằng cách:
+
+npm run build
+
+Thư mục build/ sẽ chứa các file tĩnh:
+
+2. Copy thư mục build/ lên EC2 (bạn có thể dùng SCP, WinSCP, hoặc upload qua SFTP).
+
+3.Cài đặt web server trên EC2 (Nginx hoặc Apache):
+Ví dụ với Nginx:
+sudo yum install nginx -y
+sudo systemctl enable nginx
+sudo systemctl start nginx
+
+Copy toàn bộ nội dung build/ vào thư mục web server, ví dụ:
+sudo cp -r build/* /usr/share/nginx/html/
+
+4.Cấu hình bảo mật:
+
+Mở port 80 (HTTP) hoặc 443 (HTTPS) trên Security Group của EC2.
+Nếu muốn chỉ cho phép một số IP truy cập admin, cấu hình firewall hoặc Nginx.
+
+5. Truy cập frontend admin qua public IP hoặc domain của EC2.
