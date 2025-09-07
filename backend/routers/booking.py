@@ -5,7 +5,9 @@ from typing import List
 from .admin import get_current_admin
 from models.booking import Booking
 from models.booking_db import BookingDB
-
+from flask_cors import CORS
+app = Flask(__name__)
+CORS(app)
 router = APIRouter()
 
 def get_booking_db(request: Request):
